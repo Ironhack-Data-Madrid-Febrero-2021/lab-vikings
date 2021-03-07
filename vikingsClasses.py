@@ -1,28 +1,5 @@
 
 # Soldier
-'''Modify the `Soldier` constructor function and add 2 methods to its prototype: `attack()`, and `receiveDamage()`.
-
-#### constructor function
-
-- should receive **2 arguments** (health & strength)
-- should receive the **`health` property** as its **1st argument**
-- should receive the **`strength` property** as its **2nd argument**
-
-#### `attack()` method
-
-- should be a function
-- should receive **0 arguments**
-- should return **the `strength` property of the `Soldier`**
-
-#### `receiveDamage()` method
-
-- should be a function
-- should receive **1 argument** (the damage)
-- should remove the received damage from the `health` property
-- **shouldn't return** anything
-
----
-'''
 
 class Soldier:
     def __init__(self, health, strength):
@@ -36,21 +13,55 @@ class Soldier:
         self.health -= damage
 
 
-
 # Viking
 
+class Viking(Soldier):
+    def __init__(self, name, health, strength):
+        self.name = name
+        super().__init__(health, strength)
 
-class Viking:
-    pass
+    def attack(self):
+        return super().attack()
+
+    def receiveDamage(self, damage):
+        self.health -= damage
+        if self.health > 0:
+            return f"{self.name} has received {damage} points of damage"
+        else:
+            return f"{self.name} has died in act of combat"
+        
+    def battleCry(self):
+        return f"Odin Owns You All!"
 
 # Saxon
 
 
-class Saxon:
-    pass
+class Saxon(Soldier):
+    def receiveDamage(self, damage):
+        self.health -= damage
+        if self.health > 0:
+            return ("A Saxon has received {} points of damage").format (damage)
+        else:
+            return "A Saxon has died in combat"
 
 # War
 
 
 class War:
-    pass
+    def __init__(self):
+        vikingArmy = []
+        saxonArmy = []
+
+    def addViking(self, Viking):
+        vikingArmy.append(Viking)
+
+    def addSaxon(self,Saxon):
+        saxonArmy.append(Saxon)
+        
+    def vikingAttack():
+        pass
+    def saxonAttack():
+        pass
+    def showStatus():
+        pass
+        
