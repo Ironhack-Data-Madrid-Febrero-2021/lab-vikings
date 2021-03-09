@@ -64,7 +64,6 @@ class War:
     def addSaxon(self, Saxon):
         self.saxonArmy.append(Saxon)
     def vikingAttack(self):
-        receiveDamage(Saxon) == strength(Viking)
         pass  
 
     def saxonAttack(self):
@@ -75,7 +74,7 @@ class War:
             return "Vikings have won the war of the century!"
         if self.vikingArmy == 0:
             return "Saxons have fought for their lives and survive another day..."
-        if (self.vikingArmy > 0) | (self.saxonArmy > 0) :
+        else:
             return "Vikings and Saxons are still in the thinck of battle"
 
 
