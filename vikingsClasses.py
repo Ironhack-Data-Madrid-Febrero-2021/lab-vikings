@@ -51,8 +51,8 @@ class Saxon(Soldier):
 
 class War:
     def __init__ (self):
-        self.vikingArmy = []
         self.saxonArmy = []
+        self.vikingArmy = []
 
     def addViking(self, Viking):
         self.Viking = Viking
@@ -63,27 +63,25 @@ class War:
         self.saxonArmy.append(Saxon)
     
     def vikingAttack(self):
-        s = random.choice(saxonArmy)
-        v = random.choice(vikingArmy)
-        s.receiveDamage(v[2])
-        if s[1] <=0:
-            saxonArmy.pop(s)
-        return s.receiveDamage(v[2])
+        s = random.choice(self.saxonArmy)
+        v = random.choice(self.vikingArmy)
+        if s.health <=0:
+            self.saxonArmy.remove(s)
+        return s.receiveDamage(v.strength)
     
     def saxonAttack(self):
-        s = random.choice(saxonArmy)
-        v = random.choice(vikingArmy)
-        if v[1] <=0:
-            vikingArmy.pop(v)
-        return
+        s = random.choice(self.saxonArmy)
+        v = random.choice(self.vikingArmy)
+        if v.health <=0:
+            self.vikingArmy.remove(v)
+        return v.receiveDamage(s.strength)
 
     def showStatus(self):
-        if saxonArmy == 0:
+        if len(self.saxonArmy) == 0:
             return "Vikings have won the war of the century!"
-        if vikingsArmy == 0:
+        elif len(self.vikingArmy) == 0:
             return "Saxons have fought for their lives and survive another day..."
         else:
             return "Vikings and Saxons are still in the thick of battle."
-
 
     pass
