@@ -5,11 +5,19 @@ from inspect import signature
 
 class TestSaxon(unittest.TestCase):
 
-    @classmethod
-    def setUp(cls):
-        cls.health = 60
-        cls.strength = 25
-        cls.saxon = Saxon(cls.health, cls.strength)
+    class Saxon(Soldier):
+
+        def __init__(self,health,strength):
+            self.health = health
+            self.strength = strength
+        
+
+    def receiveDamage(self,damage):
+        self.health=damage
+        if self.health>0:
+                return f"A Saxon has received {damage} points of damage"
+        if self.health<0:
+                return "A Saxon has died in act of combat"
 
     def testSaxonShouldReceiveTwoParams(self):
         self.assertEqual(len(signature(Saxon).parameters), 2)

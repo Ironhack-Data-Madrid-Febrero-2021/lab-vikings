@@ -5,13 +5,26 @@ from inspect import signature
 
 class TestViking(unittest.TestCase):
 
-    @classmethod
-    def setUp(cls):
-        cls.name = 'Harald'
-        cls.strength = 150
-        cls.health = 300
-        cls.viking = Viking(cls.name, cls.health, cls.strength)
+    class Viking(Soldier):
 
+        def __init__(self,name,strength,health):
+            self.name = name
+            self.health = health
+            self.strength = strength
+        
+    
+        def receiveDamage(self,damage):
+            self.health=damage
+            if self.health>0:
+                return f"{name} has received {damage} points of damage"
+            if self.health<0:
+                return f"{name} has died in act of combat"
+
+        def battleCry(self):
+            return "Odin Owns You All!"
+
+
+    
     def testShouldReciveThreeParams(self):
         self.assertEqual(len(signature(Viking).parameters), 3)
 

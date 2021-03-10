@@ -4,15 +4,25 @@ from inspect import signature
 
 
 class TestSoldier(unittest.TestCase):
+   
+    
+    class Soldier:
+    
+        
+        def __init__(self,health,strength):
+            self.health=health
+            self.strength=strength
+    
+        def attack(self):
+            return self.strength
 
-    @classmethod
-    def setUp(cls):
-        cls.strength = 150
-        cls.health = 300
-        cls.soldier = Soldier(cls.health, cls.strength)
+        def receiveDamage(self,damage):
+            self.health=damage
 
+
+   
     def testConstructorSignature(self):
-        self.assertEqual(len(signature(Soldier).parameters), 2)
+         self.assertEqual(len(signature(Soldier).parameters), 2)
 
     def testHealth(self):
         self.assertEqual(self.soldier.health, self.health)
@@ -28,13 +38,13 @@ class TestSoldier(unittest.TestCase):
 
     def testAttackRetunsStrength(self):
         self.assertEqual(self.soldier.attack(), self.strength)
+        return self.strength
 
     def testReceivesDamage(self):
         self.assertEqual(callable(self.soldier.receiveDamage), True)
 
     def testReceivesDamageHasParams(self):
-        self.assertEqual(
-            len(signature(self.soldier.receiveDamage).parameters), 1)
+        self.assertEqual(len(signature(self.soldier.receiveDamage).parameters), 1)
 
     def testReceiveDamageReturnNone(self):
         self.assertEqual(self.soldier.receiveDamage(50), None)
