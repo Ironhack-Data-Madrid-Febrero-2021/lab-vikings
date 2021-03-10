@@ -1,6 +1,6 @@
+import random as rd
 
 # Soldier
-
 
 class Soldier:
     def __init__ (self, health, strength):
@@ -60,12 +60,21 @@ class War:
         self.saxonArmy = []
         
     def addViking(self, Viking):
-        self.vikingArmy.__add__(Viking)
+        self.vikingArmy.append(Viking)
 
     def addSaxon(self, Saxon):
-        self.saxonArmy.__add__(Saxon)
+        self.saxonArmy.append(Saxon)
 
     def VikingAttack(self):
+        pass 
+
+    def SaxonAttack(self):
         pass
+
     def showStatus(self):
-        pass
+        if self.saxonArmy == 0:
+            return ("Vikings have won the war of the century!")
+        elif self.vikingArmy == 0:
+            return ("Saxons have fought for their lives and survive another day...")
+        else:
+            return ("Vikings and Saxons are still in the thick of battle.")
